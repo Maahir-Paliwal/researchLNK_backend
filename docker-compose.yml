@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: researchlnk_db
+      POSTGRES_USER: researchlnk_user
+      POSTGRES_PASSWORD: researchlnk_password
+    ports:
+      - "5433:5432"
