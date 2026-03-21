@@ -1,8 +1,9 @@
 package com.maahir.researchLNK_backend.persistence.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Set;
 
 @Entity
 @Getter
@@ -12,5 +13,31 @@ import lombok.*;
 @Builder
 @Table(name = "profiles")
 public class Profile {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Long id;
+
+    @Column(name="summary")
+    private String summary;
+
+    @Column(name="institution")
+    private String institution;
+
+    @Column(name="profile_picture_key")
+    private String profilePictureKey;
+
+    @Column(name = "position")
+    private String position;
+
+    @OneToOne(mappedBy = "profile")
+    private User user;
+
+    @OneToOne(mappedBy = "profile")
+    private SwipeCard swipeCard;
+
+    @OneToMany(mappedBy = "profile")
+    private Set<PersonalPublication> personalPublications;
 
 }
