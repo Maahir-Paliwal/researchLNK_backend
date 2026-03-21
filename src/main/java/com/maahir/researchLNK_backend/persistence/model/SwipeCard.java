@@ -20,5 +20,6 @@ public class SwipeCard {
     private Long id;
 
     @OneToOne(mappedBy = "swipeCard")
+    @JoinColumn(name = "profile_id")
     private Profile profile;
 }
