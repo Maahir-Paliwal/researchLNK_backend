@@ -1,12 +1,12 @@
 package com.maahir.researchLNK_backend.persistence.model;
 
+import com.maahir.researchLNK_backend.persistence.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
-import javax.management.relation.Role;
 import java.time.Instant;
 
 
@@ -35,7 +35,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
-    private Role role;
+    private Role role
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive = true;
