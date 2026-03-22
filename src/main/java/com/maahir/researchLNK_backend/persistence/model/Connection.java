@@ -4,6 +4,10 @@ import com.maahir.researchLNK_backend.persistence.model.enums.ConnectionStatus;
 import com.maahir.researchLNK_backend.persistence.model.keys.ConnectionId;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
 
 @Entity
 @Table(name = "connections")
@@ -19,6 +23,14 @@ public class Connection {
 
     @Column(name = "status")
     private ConnectionStatus status;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    @CreationTimestamp
+    private Instant createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    @UpdateTimestamp
+    private Instant updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "requester_id")
