@@ -64,4 +64,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<ConversationParticipant> conversationParticipants;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Message> messages;
 }

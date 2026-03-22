@@ -19,6 +19,13 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "content", nullable = false, updatable = false)
+    private String content;
+
+    @Column(name="created_at", nullable = false, updatable = false)
+    @CreationTimestamp
+    private Instant createdAt;
+
     @ManyToOne
     @JoinColumn(name="conversation_id", nullable = false)
     private Conversation conversation;
@@ -26,12 +33,5 @@ public class Message {
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
     private User user;
-
-    @Column(name = "content", nullable = false, updatable = false)
-    private String content;
-
-    @Column(name="created_at", nullable = false, updatable = false)
-    @CreationTimestamp
-    private Instant createdAt;
 
 }

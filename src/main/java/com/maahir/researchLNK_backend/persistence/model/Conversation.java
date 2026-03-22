@@ -30,4 +30,7 @@ public class Conversation {
 
     @OneToMany(mappedBy = "conversation")
     private Set<ConversationParticipant> participants;
+
+    @OneToMany(mappedBy = "conversation")
+    private Set<Message> messages;
 }
