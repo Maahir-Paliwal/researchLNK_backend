@@ -24,7 +24,10 @@ public class Conversation {
     @Column(name = "title")
     private String title;
 
-    @Column(name="created_at")
+    @Column(name="created_at", updatable = false)
     @CreationTimestamp
     private Instant createdAt;
+
+    @OneToMany(mappedBy = "conversation")
+    private Set<ConversationParticipant> participants;
 }
