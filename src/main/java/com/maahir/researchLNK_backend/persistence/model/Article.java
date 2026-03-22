@@ -13,6 +13,7 @@ import org.hibernate.type.SqlTypes;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -93,4 +94,7 @@ public class Article {
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name="raw_payload_json", columnDefinition = "jsonb")
     private JsonNode rawPayloadJson;
+
+    @ManyToMany(mappedBy="likedArticles")
+    private Set<User> users;
 }

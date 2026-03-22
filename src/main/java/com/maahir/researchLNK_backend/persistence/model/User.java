@@ -67,4 +67,11 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Message> messages;
+
+    @ManyToMany
+    @JoinTable(name="users_liked_articles",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="article_id")
+            )
+    private Set<Article> likedArticles;
 }
