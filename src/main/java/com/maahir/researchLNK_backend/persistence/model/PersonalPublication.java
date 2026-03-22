@@ -19,13 +19,13 @@ public class PersonalPublication {
     @Column
     private Long id;
 
-    @Column(name="content")
+    @Column(name="content", columnDefinition = "TEXT")
     private String content;
 
-    @Column(name="title")
+    @Column(name="title", columnDefinition = "TEXT")
     private String title;
 
-    @Column(name="authors")
+    @Column(name="authors", columnDefinition = "TEXT")
     private String authors;
 
     @Enumerated(EnumType.STRING)

@@ -19,7 +19,7 @@ public class Profile {
     @Column
     private Long id;
 
-    @Column(name="summary")
+    @Column(name="summary", columnDefinition = "TEXT")
     private String summary;
 
     @Column(name="institution")

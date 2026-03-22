@@ -43,10 +43,10 @@ public class Article {
     @Column(name="doi")
     private String doi;
 
-    @Column(name = "title")
+    @Column(name = "title", columnDefinition = "TEXT")
     private String title;
 
-    @Column(name = "abstract")
+    @Column(name = "abstract", columnDefinition = "TEXT")
     private String academicAbstract;
 
     @Column(name = "publication_date")
