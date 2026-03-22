@@ -3,14 +3,12 @@ package com.maahir.researchLNK_backend.persistence.model;
 
 import com.maahir.researchLNK_backend.persistence.model.enums.PublicationStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "personal_publications")
 @Getter
+@Builder
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor

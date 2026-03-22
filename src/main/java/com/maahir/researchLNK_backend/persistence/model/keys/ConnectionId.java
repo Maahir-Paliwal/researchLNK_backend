@@ -6,17 +6,16 @@ import lombok.*;
 
 import java.io.Serializable;
 
-
 @Embeddable
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class ConversationParticipantId implements Serializable {
-    @Column(name = "user_id")
-    private Long userId;
+public class ConnectionId implements Serializable {
+    @Column(name="user_low_id")
+    private Long userLowId;
 
-    @Column(name = "conversation_id")
-    private Long conversationId;
+    @Column(name="user_high_id")
+    private Long userHighId;
 }
