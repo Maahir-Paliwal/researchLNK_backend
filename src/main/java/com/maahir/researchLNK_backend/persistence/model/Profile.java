@@ -40,5 +40,4 @@ public class Profile {
 
     @OneToMany(mappedBy = "profile")
     private Set<PersonalPublication> personalPublications;
-
 }
