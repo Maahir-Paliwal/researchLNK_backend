@@ -35,7 +35,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
-    private Role role
+    private Role role;
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive = true;
