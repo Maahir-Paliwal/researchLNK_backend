@@ -17,7 +17,7 @@ public class SwipeCard {
     @Column
     private Long id;
 
-    @OneToOne(mappedBy = "swipeCard")
-    @JoinColumn(name = "profile_id")
+    @OneToOne
+    @JoinColumn(name = "profile_id", nullable = false)
     private Profile profile;
 }

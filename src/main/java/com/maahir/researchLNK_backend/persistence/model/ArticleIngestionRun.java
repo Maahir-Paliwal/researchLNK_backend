@@ -56,7 +56,7 @@ public class ArticleIngestionRun {
     @Column(name="articles_failed_count", nullable = false)
     private Long articlesFailedCount;
 
-    @Column(name="error_message")
+    @Column(name="error_message", columnDefinition = "TEXT")
     private String errorMessage;
 
     @Column(name="created_at", nullable = false, updatable = false)

@@ -21,7 +21,8 @@ public class Connection {
     @EmbeddedId
     private ConnectionId id;
 
-    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
     private ConnectionStatus status;
 
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -33,7 +34,7 @@ public class Connection {
     private Instant updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "requester_id")
+    @JoinColumn(name = "requester_id", nullable = false)
     private User requester;
 
     @ManyToOne

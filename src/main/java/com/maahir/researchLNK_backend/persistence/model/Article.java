@@ -21,7 +21,12 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "articles")
+@Table(
+        name = "articles",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uc_articles_source_source_id", columnNames = {"source", "source_id"})
+        }
+)
 public class Article {
 
     @Id
@@ -37,7 +42,7 @@ public class Article {
     @Column(name="source")
     private Source source;
 
-    @Column(name = "source_id", unique = true)
+    @Column(name = "source_id")
     private String sourceId;
 
     @Column(name="doi")
@@ -65,7 +70,7 @@ public class Article {
     private String pdfUrl;
 
     @Column(name="is_open_access")
-    private boolean isOpenAccess;
+    private Boolean isOpenAccess;
 
     @Column(name="primary_topic")
     private String primaryTopic;
