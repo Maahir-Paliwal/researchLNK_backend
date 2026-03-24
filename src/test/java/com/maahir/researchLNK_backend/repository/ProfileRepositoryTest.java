@@ -1,21 +1,18 @@
 package com.maahir.researchLNK_backend.repository;
 
-
 import com.maahir.researchLNK_backend.persistence.model.Profile;
-import com.maahir.researchLNK_backend.persistence.model.SwipeCard;
 import com.maahir.researchLNK_backend.persistence.model.User;
 import com.maahir.researchLNK_backend.persistence.model.enums.Role;
 import com.maahir.researchLNK_backend.persistence.repository.ProfileRepository;
-import com.maahir.researchLNK_backend.persistence.repository.SwipeCardRepository;
 import com.maahir.researchLNK_backend.persistence.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
+import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.containers.PostgreSQLContainer;
 
 import java.util.Optional;
 
@@ -24,30 +21,26 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @DataJpaTest
 @Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class SwipeCardRepositoryTest {
+public class ProfileRepositoryTest {
 
     @Container
     static PostgreSQLContainer<?> postgreSQLContainer =
             new PostgreSQLContainer<>("pgvector/pgvector:pg17");
 
     @Autowired
-    private SwipeCardRepository swipeCardRepository;
+    private ProfileRepository profileRepository;
 
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private ProfileRepository profileRepository;
-
     @AfterEach
-    void clearDatabase() {
-        swipeCardRepository.deleteAll();
+    public void clearDatabase() {
         profileRepository.deleteAll();
         userRepository.deleteAll();
     }
 
     @Test
-    void testPersistSwipeCard() {
+    public void testPersistProfile(){
         User user1 = userRepository.save(
                 User.builder()
                         .userName("user1")
@@ -58,24 +51,19 @@ public class SwipeCardRepositoryTest {
                         .name("User One")
                         .build()
         );
-        Profile profile1 = profileRepository.save(
-                Profile.builder()
+
+        Profile profile1 = Profile.builder()
                         .user(user1)
-                        .build()
-        );
+                        .build();
 
-        SwipeCard swipeCard = SwipeCard.builder()
-                .profile(profile1)
-                .build();
+        Profile profile = profileRepository.save(profile1);
 
-        swipeCard = swipeCardRepository.save(swipeCard);
+        Long id = profile.getId();
 
-        Long id = swipeCard.getId();
+        Optional<Profile> profileOptional = profileRepository.findById(id);
 
-        Optional<SwipeCard> swipeCardOptional = swipeCardRepository.findById(id);
-
-        assertThat(swipeCardOptional).isPresent();
-        assertThat(swipeCardOptional.get().getId()).isEqualTo(swipeCard.getId());
-        assertThat(swipeCardOptional.get().getProfile()).isEqualTo(swipeCard.getProfile());
+        assertThat(profileOptional).isPresent();
+        assertThat(profileOptional.get().getId()).isEqualTo(profile.getId());
+        assertThat(profileOptional.get().getUser()).isEqualTo(profile.getUser());
     }
 }
