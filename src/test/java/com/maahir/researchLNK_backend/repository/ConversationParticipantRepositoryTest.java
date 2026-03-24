@@ -5,6 +5,7 @@ import com.maahir.researchLNK_backend.persistence.model.Conversation;
 import com.maahir.researchLNK_backend.persistence.model.ConversationParticipant;
 import com.maahir.researchLNK_backend.persistence.model.User;
 import com.maahir.researchLNK_backend.persistence.model.enums.Role;
+import com.maahir.researchLNK_backend.persistence.model.keys.ConversationParticipantId;
 import com.maahir.researchLNK_backend.persistence.repository.ConversationParticipantRepository;
 import com.maahir.researchLNK_backend.persistence.repository.ConversationRepository;
 import com.maahir.researchLNK_backend.persistence.repository.UserRepository;
@@ -19,6 +20,10 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.Optional;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
 @Testcontainers
@@ -67,9 +72,22 @@ public class ConversationParticipantRepositoryTest {
 
         ConversationParticipant conversationParticipant =
                 ConversationParticipant.builder()
-                        .lastReadAt(Timestamp)
+                        .lastReadAt(Instant.now())
+                        .user(user1)
+                        .conversation(conversation)
+                        .build();
 
+        conversationParticipant = conversationParticipantRepository.saveAndFlush(conversationParticipant);
 
+        ConversationParticipantId conversationParticipantId = conversationParticipant.getId();
 
+        Optional<ConversationParticipant> conversationParticipantOptional = conversationParticipantRepository.findById(conversationParticipantId);
+
+        assertThat(conversationParticipantOptional).isPresent();
+        assertThat(conversationParticipantOptional.get().getId()).isEqualTo(conversationParticipant.getId());
+        assertThat(conversationParticipantOptional.get().getLastReadAt()).isEqualTo(conversationParticipant.getLastReadAt());
+        assertThat(conversationParticipantOptional.get().getUser()).isEqualTo(conversationParticipant.getUser());
+        assertThat(conversationParticipantOptional.get().getConversation()).isEqualTo(conversationParticipant.getConversation());
+        assertThat(conversationParticipantOptional.get().getJoinedAt()).isNotNull();
     }
 }
