@@ -17,7 +17,8 @@ import java.sql.Timestamp;
 public class ConversationParticipant {
 
     @EmbeddedId
-    private ConversationParticipantId id;
+    @Builder.Default
+    private ConversationParticipantId id = new ConversationParticipantId();
 
     @Column(name="joined_at", nullable = false, updatable = false)
     @CreationTimestamp
