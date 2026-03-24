@@ -18,8 +18,10 @@ import java.time.Instant;
 @NoArgsConstructor
 public class Connection {
 
+    // NOTE: saveAndFlush necessary since save does not persist immediately
     @EmbeddedId
-    private ConnectionId id;
+    @Builder.Default
+    private ConnectionId id = new ConnectionId();
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
