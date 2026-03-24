@@ -7,7 +7,6 @@ import com.maahir.researchLNK_backend.persistence.model.enums.Role;
 import com.maahir.researchLNK_backend.persistence.repository.PersonalPublicationRepository;
 import com.maahir.researchLNK_backend.persistence.repository.ProfileRepository;
 import com.maahir.researchLNK_backend.persistence.repository.UserRepository;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
