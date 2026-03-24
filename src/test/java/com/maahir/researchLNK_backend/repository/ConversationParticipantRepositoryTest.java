@@ -1,6 +1,10 @@
 package com.maahir.researchLNK_backend.repository;
 
 
+import com.maahir.researchLNK_backend.persistence.model.Conversation;
+import com.maahir.researchLNK_backend.persistence.model.ConversationParticipant;
+import com.maahir.researchLNK_backend.persistence.model.User;
+import com.maahir.researchLNK_backend.persistence.model.enums.Role;
 import com.maahir.researchLNK_backend.persistence.repository.ConversationParticipantRepository;
 import com.maahir.researchLNK_backend.persistence.repository.ConversationRepository;
 import com.maahir.researchLNK_backend.persistence.repository.UserRepository;
@@ -13,6 +17,8 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import java.sql.Timestamp;
 
 @DataJpaTest
 @Testcontainers
@@ -42,6 +48,28 @@ public class ConversationParticipantRepositoryTest {
 
     @Test
     public void testPersistConversationParticipant() {
+        User user1 = userRepository.save(
+                User.builder()
+                        .userName("user1")
+                        .email("user1@test.com")
+                        .passwordHash("pw1")
+                        .role(Role.RESEARCHER)
+                        .isActive(true)
+                        .name("User One")
+                        .build()
+        );
+
+        Conversation conversation = conversationRepository.save(
+                Conversation.builder()
+                .title("title")
+                .build()
+        );
+
+        ConversationParticipant conversationParticipant =
+                ConversationParticipant.builder()
+                        .lastReadAt(Timestamp)
+
+
 
     }
 }

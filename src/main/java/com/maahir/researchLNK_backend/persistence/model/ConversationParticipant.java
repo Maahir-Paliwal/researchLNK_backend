@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 @Builder
@@ -22,10 +23,10 @@ public class ConversationParticipant {
 
     @Column(name="joined_at", nullable = false, updatable = false)
     @CreationTimestamp
-    private Timestamp joinedAt;
+    private Instant joinedAt;
 
     @Column(name="last_read_at")
-    private Timestamp lastReadAt;
+    private Instant lastReadAt;
 
     @ManyToOne
     @MapsId("userId")
