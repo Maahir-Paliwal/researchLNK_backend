@@ -115,12 +115,6 @@ public class ConnectionService {
     }
 
 
-
-
-
-
-
-
     private ConnectionId normalizeConnectionId(Long user1Id, Long user2Id) {
         return new ConnectionId(Math.min(user1Id, user2Id), Math.max(user1Id, user2Id));
     }
