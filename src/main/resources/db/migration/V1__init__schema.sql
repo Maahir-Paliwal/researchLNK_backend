@@ -100,7 +100,7 @@ CREATE TABLE profiles
     institution         VARCHAR(255),
     profile_picture_key VARCHAR(255),
     position            VARCHAR(255),
-    user_id             BIGINT                                  NOT NULL,
+    user_id             BIGINT                            UNIQUE NOT NULL,
     CONSTRAINT pk_profiles PRIMARY KEY (id)
 );
 

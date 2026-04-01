@@ -32,7 +32,7 @@ public class Profile {
     private String position;
 
     @OneToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 
     @OneToOne(mappedBy = "profile")
