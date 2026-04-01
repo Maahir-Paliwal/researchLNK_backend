@@ -9,6 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProfileService {
@@ -40,4 +42,16 @@ public class ProfileService {
 
         return profileMapper.toDto(updatedProfile);
     }
+
+    public List<ProfileDto> searchProfilesByUserName(String userNameQuery){
+        if (userNameQuery.isBlank()) {
+            return List.of();
+        }
+
+        return profileRepository.findByUser_UserNameContainingIgnoreCase(userNameQuery)
+                .stream()
+                .map(profileMapper::toDto)
+                .toList();
+    }
+
 }
