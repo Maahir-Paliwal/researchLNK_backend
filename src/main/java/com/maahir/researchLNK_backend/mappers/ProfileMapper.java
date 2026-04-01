@@ -6,11 +6,15 @@ import com.maahir.researchLNK_backend.persistence.model.Profile;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface ProfileMapper {
 
-    @Mapping(target = "userName", source = "user.userName")
+    @Mappings({
+            @Mapping(target = "userName", source = "user.userName"),
+            @Mapping(target = "userId", source = "user.id")
+    })
     ProfileDto toDto(Profile profile);
 
     void updateProfile(UpdateProfileRequestDto request, @MappingTarget Profile profile);

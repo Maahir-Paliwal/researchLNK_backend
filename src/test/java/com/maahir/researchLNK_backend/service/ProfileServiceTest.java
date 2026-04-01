@@ -54,6 +54,7 @@ class ProfileServiceTest {
 
         profileDto = new ProfileDto();
         profileDto.setId(10L);
+        profileDto.setUserId(1L);
         profileDto.setUserName("maahir");
         profileDto.setSummary("Original summary");
         profileDto.setInstitution("McGill");
@@ -110,6 +111,7 @@ class ProfileServiceTest {
         ProfileDto updatedDto = new ProfileDto();
         updatedDto.setId(10L);
         updatedDto.setUserName("maahir");
+        updatedDto.setUserId(1L);
         updatedDto.setSummary("Updated summary");
         updatedDto.setInstitution("UofT");
         updatedDto.setPosition("Researcher");

@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ProfileDto {
     private Long id;
+    private Long userId;
     private String userName;
     private String summary;
     private String institution;
