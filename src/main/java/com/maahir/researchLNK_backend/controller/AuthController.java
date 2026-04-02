@@ -43,7 +43,4 @@ public class AuthController {
         UserResponse userResponse = authService.getCurrentUser(user);
         return ResponseEntity.ok(userResponse);
     }
-
-
-
 }
