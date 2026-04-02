@@ -19,3 +19,8 @@ spring:
   docker:
     compose:
       enabled: true
+
+security:
+  jwt:
+    expiration-time: 86400000
+    secret-key: ${SECRET_KEY}
