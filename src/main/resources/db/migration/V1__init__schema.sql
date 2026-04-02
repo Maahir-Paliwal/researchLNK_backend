@@ -119,7 +119,7 @@ CREATE TABLE users
     password_hash VARCHAR(255)          NOT NULL,
     `role`        VARCHAR(255)          NOT NULL,
     is_active     BIT(1)                NOT NULL,
-    name          VARCHAR(255)          NULL,
+    name          VARCHAR(255)          NOT NULL,
     orcid_id      VARCHAR(255)          NULL,
     created_at    datetime              NOT NULL,
     user_vector VECTOR(384) NULL,
