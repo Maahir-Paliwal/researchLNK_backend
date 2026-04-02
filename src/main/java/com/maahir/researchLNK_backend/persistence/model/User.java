@@ -82,9 +82,13 @@ public class User implements UserDetails {
     private Set<Article> likedArticles;
 
 
+    public String getUserName(){
+        return this.userName;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("Role" + role.name()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override
