@@ -1,6 +1,6 @@
 package com.maahir.researchLNK_backend.mappers;
 
-import com.maahir.researchLNK_backend.dtos.connectiondtos.ConnectionDto;
+import com.maahir.researchLNK_backend.dtos.connection.ConnectionDto;
 import com.maahir.researchLNK_backend.persistence.model.Connection;
 import org.mapstruct.Mapper;
 

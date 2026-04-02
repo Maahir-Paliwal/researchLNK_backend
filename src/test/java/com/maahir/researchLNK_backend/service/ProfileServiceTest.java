@@ -1,7 +1,7 @@
 package com.maahir.researchLNK_backend.service;
 
-import com.maahir.researchLNK_backend.dtos.profiledtos.ProfileDto;
-import com.maahir.researchLNK_backend.dtos.profiledtos.UpdateProfileRequestDto;
+import com.maahir.researchLNK_backend.dtos.profile.ProfileDto;
+import com.maahir.researchLNK_backend.dtos.profile.UpdateProfileRequestDto;
 import com.maahir.researchLNK_backend.mappers.ProfileMapper;
 import com.maahir.researchLNK_backend.persistence.model.Profile;
 import com.maahir.researchLNK_backend.persistence.model.User;

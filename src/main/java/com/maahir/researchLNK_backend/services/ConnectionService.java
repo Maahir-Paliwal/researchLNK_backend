@@ -1,6 +1,6 @@
 package com.maahir.researchLNK_backend.services;
 
-import com.maahir.researchLNK_backend.dtos.connectiondtos.ConnectionDto;
+import com.maahir.researchLNK_backend.dtos.connection.ConnectionDto;
 import com.maahir.researchLNK_backend.mappers.ConnectionMapper;
 import com.maahir.researchLNK_backend.persistence.model.Connection;
 import com.maahir.researchLNK_backend.persistence.model.User;

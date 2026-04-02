@@ -1,4 +1,4 @@
-package com.maahir.researchLNK_backend.dtos.connectiondtos;
+package com.maahir.researchLNK_backend.dtos.connection;
 
 import com.maahir.researchLNK_backend.persistence.model.enums.ConnectionStatus;
 import lombok.Data;

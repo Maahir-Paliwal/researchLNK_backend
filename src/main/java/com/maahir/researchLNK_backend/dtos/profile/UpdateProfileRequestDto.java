@@ -1,4 +1,4 @@
-package com.maahir.researchLNK_backend.dtos.profiledtos;
+package com.maahir.researchLNK_backend.dtos.profile;
 
 
 import lombok.Data;
