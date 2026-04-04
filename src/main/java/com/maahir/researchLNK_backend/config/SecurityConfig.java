@@ -1,7 +1,6 @@
 package com.maahir.researchLNK_backend.config;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maahir.researchLNK_backend.persistence.repository.UserRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +22,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.Map;
 
@@ -93,7 +93,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    AuthenticationEntryPoint authenticationEntryPoint(ObjectMapper mapper) {
+    AuthenticationEntryPoint authenticationEntryPoint(JsonMapper mapper) {
         return (request, response, ex) -> {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.setContentType("application/json");
@@ -106,7 +106,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    AccessDeniedHandler accessDeniedHandler(ObjectMapper mapper) {
+    AccessDeniedHandler accessDeniedHandler(JsonMapper mapper) {
         return (request, response, ex) -> {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             response.setContentType("application/json");
