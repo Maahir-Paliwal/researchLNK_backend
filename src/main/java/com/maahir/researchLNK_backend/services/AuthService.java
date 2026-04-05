@@ -13,9 +13,11 @@ import org.springframework.stereotype.Service;
 /* TODO: Develop auth workflow around ORCID:
     1. User can sign up with email + password and LATER log in with ORCID
     2. User can sign up with ORCID
-    - IN EITHER CASE, when ORCID is input, openAlex is queried for any publications
+    3. A verified researcher can send a sign up link to a new user to sign up, giving researcher status automatically
+    - IN CASE 1 OR 2, when ORCID is input, openAlex is queried for any publications
     - If publications found, then change their role to researcher and
         instantiate an empty profile, empty swipecard, and allow access to the instant messaging
+
  */
 
 
