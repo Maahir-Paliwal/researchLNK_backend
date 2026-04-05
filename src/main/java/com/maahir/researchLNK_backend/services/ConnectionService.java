@@ -5,6 +5,7 @@ import com.maahir.researchLNK_backend.mappers.ConnectionMapper;
 import com.maahir.researchLNK_backend.persistence.model.Connection;
 import com.maahir.researchLNK_backend.persistence.model.User;
 import com.maahir.researchLNK_backend.persistence.model.enums.ConnectionStatus;
+import com.maahir.researchLNK_backend.persistence.model.enums.Role;
 import com.maahir.researchLNK_backend.persistence.model.keys.ConnectionId;
 import com.maahir.researchLNK_backend.persistence.repository.ConnectionRepository;
 import com.maahir.researchLNK_backend.persistence.repository.UserRepository;
@@ -28,9 +29,11 @@ public class ConnectionService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
         User otherUser = userRepository.findById(otherUserId).
                 orElseThrow(() -> new IllegalArgumentException("User not found"));
+        if (requester.getRole() == Role.NON_RESEARCHER || otherUser.getRole() == Role.NON_RESEARCHER) {
+            throw new IllegalStateException("Non-researchers cannot have connections");
+        }
 
         ConnectionId connectionId = normalizeConnectionId(authenticatedUserId, otherUserId);
-
         Connection existingConnection = connectionRepository.findById(connectionId).orElse(null);
 
         // will NEVER be null following the logic operations below
@@ -71,6 +74,9 @@ public class ConnectionService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
         User otherUser = userRepository.findById(otherUserId).
                 orElseThrow(() -> new IllegalArgumentException("User not found"));
+        if (authenticatedUser.getRole() == Role.NON_RESEARCHER || otherUser.getRole() == Role.NON_RESEARCHER) {
+            throw new IllegalStateException("Non-researchers cannot have connections");
+        }
 
         if (authenticatedUser.getId().equals(otherUserId)) {
             throw new IllegalArgumentException("You cannot accept a connection with yourself");
