@@ -62,8 +62,9 @@ public class MessageRepositoryTest {
 
         Conversation conversation = conversationRepository.save(
                 Conversation.builder()
-                .title("title")
-                .build()
+                        .creator(user)
+                        .title("title")
+                        .build()
         );
 
         Message message = Message.builder()

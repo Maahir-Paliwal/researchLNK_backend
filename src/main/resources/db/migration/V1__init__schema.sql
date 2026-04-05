@@ -1,4 +1,4 @@
-create EXTENSION IF NOT EXISTS vector;
+CREATE EXTENSION IF NOT EXISTS vector;
 
 CREATE TABLE article_ingestion_runs
 (
@@ -46,12 +46,12 @@ CREATE TABLE articles
 
 CREATE TABLE connections
 (
-    status       VARCHAR(255) NOT NULL,
+    status       VARCHAR(255)                NOT NULL,
     created_at   TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     updated_at   TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    requester_id BIGINT       NOT NULL,
-    user_low_id  BIGINT       NOT NULL,
-    user_high_id BIGINT       NOT NULL,
+    requester_id BIGINT                      NOT NULL,
+    user_low_id  BIGINT                      NOT NULL,
+    user_high_id BIGINT                      NOT NULL,
     CONSTRAINT pk_connections PRIMARY KEY (user_low_id, user_high_id)
 );
 
@@ -59,8 +59,8 @@ CREATE TABLE conversation_participants
 (
     joined_at       TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     last_read_at    TIMESTAMP WITHOUT TIME ZONE,
-    user_id         BIGINT NOT NULL,
-    conversation_id BIGINT NOT NULL,
+    user_id         BIGINT                      NOT NULL,
+    conversation_id BIGINT                      NOT NULL,
     CONSTRAINT pk_conversation_participants PRIMARY KEY (user_id, conversation_id)
 );
 

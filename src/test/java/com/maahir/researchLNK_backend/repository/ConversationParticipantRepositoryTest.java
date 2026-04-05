@@ -65,8 +65,9 @@ public class ConversationParticipantRepositoryTest {
 
         Conversation conversation = conversationRepository.save(
                 Conversation.builder()
-                .title("title")
-                .build()
+                        .creator(user1)
+                        .title("title")
+                        .build()
         );
 
         ConversationParticipant conversationParticipant =
