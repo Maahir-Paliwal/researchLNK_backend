@@ -31,6 +31,10 @@ public class Conversation {
     @OneToMany(mappedBy = "conversation")
     private Set<ConversationParticipant> participants;
 
+    @ManyToOne
+    @JoinColumn(name="creator_id", nullable = false)
+    private User creator;
+
     @OneToMany(mappedBy = "conversation")
     private Set<Message> messages;
 }

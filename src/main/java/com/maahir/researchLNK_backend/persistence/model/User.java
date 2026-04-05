@@ -42,7 +42,6 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private Role role;
-
     @Builder.Default
     @Column(name = "is_active", nullable = false)
     private boolean isActive = true;
