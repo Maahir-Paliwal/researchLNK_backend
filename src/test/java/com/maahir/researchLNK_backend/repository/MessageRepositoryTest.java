@@ -1,7 +1,6 @@
 package com.maahir.researchLNK_backend.repository;
 
 import com.maahir.researchLNK_backend.persistence.model.Conversation;
-import com.maahir.researchLNK_backend.persistence.model.ConversationParticipant;
 import com.maahir.researchLNK_backend.persistence.model.Message;
 import com.maahir.researchLNK_backend.persistence.model.User;
 import com.maahir.researchLNK_backend.persistence.model.enums.Role;
