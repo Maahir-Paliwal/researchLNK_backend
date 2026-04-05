@@ -1,6 +1,7 @@
 package com.maahir.researchLNK_backend.repository;
 
 import com.maahir.researchLNK_backend.persistence.model.Conversation;
+import com.maahir.researchLNK_backend.persistence.model.ConversationParticipant;
 import com.maahir.researchLNK_backend.persistence.model.Message;
 import com.maahir.researchLNK_backend.persistence.model.User;
 import com.maahir.researchLNK_backend.persistence.model.enums.Role;
@@ -70,7 +71,7 @@ public class MessageRepositoryTest {
         Message message = Message.builder()
                 .content("content")
                 .conversation(conversation)
-                .user(user)
+                .messageSender(user)
                 .build();
 
         message = messageRepository.save(message);
@@ -83,7 +84,7 @@ public class MessageRepositoryTest {
         assertThat(messageOptional.get().getId()).isEqualTo(message.getId());
         assertThat(messageOptional.get().getContent()).isEqualTo(message.getContent());
         assertThat(messageOptional.get().getConversation()).isEqualTo(message.getConversation());
-        assertThat(messageOptional.get().getUser()).isEqualTo(message.getUser());
+        assertThat(messageOptional.get().getMessageSender()).isEqualTo(message.getMessageSender());
     }
 
 }

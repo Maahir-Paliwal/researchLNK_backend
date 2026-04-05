@@ -31,7 +31,7 @@ public class Message {
     private Conversation conversation;
 
     @ManyToOne
-    @JoinColumn(name="user_id", nullable = false)
-    private User user;
+    @JoinColumn(name="message_sender_id", nullable = false)
+    private User messageSender;
 
 }

@@ -70,7 +70,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private Set<ConversationParticipant> conversationParticipants;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "messageSender")
     private Set<Message> messages;
 
     @ManyToMany
